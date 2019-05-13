@@ -15,7 +15,31 @@
 #   limitations under the License.
 
 ############################  SETUP PARAMETERS
-sudo apt install vim vim-gnome ctags
+#peronal function
+exists() {
+    type "$1" >/dev/null 2>/dev/null
+}
+
+#install following three applications to release the full power of spf13-vim
+
+exists "vim"
+if [ $? -eq 0 ]
+then
+    sudo apt install vim
+fi
+
+exists "vim-gnome"
+if [ $? -eq 0 ]
+then
+    sudo apt install vim-gnome
+fi
+
+exists "ctags"
+if [ $? -eq 0 ]
+then
+    sudo apt install ctags
+fi
+
 
 app_name='spf13-vim'
 [ -z "$APP_PATH" ] && APP_PATH="$HOME/.spf13-vim-3"
@@ -206,3 +230,4 @@ setup_vundle    "$APP_PATH/.vimrc.bundles.default"
 
 msg             "\nThanks for installing $app_name."
 msg             "© `date +%Y` http://vim.spf13.com/"
+
